@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="pixelCanvas"></canvas>
+
+<script>
+  const canvas = document.getElementById('pixelCanvas');
+  const ctx = canvas.getContext('2d');
+  const pixelSize = 10;
+  let isDrawing = false;
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  canvas.addEventListener('mousedown', function(event) {
+    isDrawing = true;
+    event.preventDefault(); // Prevent default behavior
+  });
+
+  canvas.addEventListener('mouseup', function(event) {
+    isDrawing = false;
+  });
+
+  canvas.addEventListener('mousemove', function(event) {
+    if (isDrawing) {
+      const x = Math.floor(event.offsetX / pixelSize) * pixelSize;
+      const y = Math.floor(event.offsetY / pixelSize) * pixelSize;
+      ctx.fillStyle = '#010000';
+      ctx.fillRect(x, y, pixelSize, pixelSize);
+    }
+  });
+</script>
+
+<script src="export.js"></script>
+
+</body>
+</html>
