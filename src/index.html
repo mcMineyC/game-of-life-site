@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cmyk">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -9,30 +9,30 @@
     <title></title>
 </head>
 
-<body class="h-full">
+<body class="flex flex-col h-full">
     <div class="navbar bg-neutral">
         <div class="flex-1">
             <div class="btn rounded-xl">Run <span class="material-symbols-outlined">cloud_upload</span></div>
         </div>
         <div class="flex-none">
             <div role="tablist" class="tabs tabs-boxed">
-                <a role="tab" class="tab tab-active">Normal</a>
-                <a role="tab" class="tab">Advanced</a>
+                <a role="tab" class="tab">Normal</a>
+                <a role="tab" class="tab tab-active">Advanced</a>
             </div>
         </div>
     </div>
-    <div id="left-pane" class="left-pane h-full bg-base-300">
-        <div id="pane-header" class="">
-            <article id="pane-title" class="w-full prose prose-xl pt-3 pl-2 pr-2">Header</article>
+    <div class="flex flex-row flex-1">
+        <div id="left-pane" class="left-pane bg-base-300 flex-initial items-stretch">
+            <div id="pane-header">
+                <article id="pane-title" class="w-full prose prose-xl max-h-full pt-3 pl-2 pr-2">Header</article>
+            </div>
+            <div id="pane-content" class="p-2 prose prose-md w-full skeleton"></div>
         </div>
-        <div id="pane-content" class="p-2 prose prose-md w-full">
-            <div>Pattern #1</div>
-            <div>Pattern #2</div>
-            <div>Pattern #3</div>
-            <div>Pattern #4</div>
-            <div>Pattern #5</div>
+        <div id="content" class="flex-1">
+            <textarea id="advanced-textarea" class="textarea textarea-bordered w-full h-full" placeholder="RLE goes here..."></textarea>
         </div>
     </div>
 </body>
-
+<script src="populate_pane.js"></script>
+<script src="paneworker.js"></script>
 </html>

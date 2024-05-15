@@ -3,11 +3,40 @@
 @tailwind utilities;
 
 html{
-    height: 100vh;
+    --sidebar-width: 300px;
+}
+body{
+    height: 100vh !important;
+    overflow: hidden;
 }
 
 .left-pane{
-    max-width: 300px;
-    min-width: 300px;
-    min-height: 100%;
+    width: var(--sidebar-width);
+}
+.divider-none{
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+.sidebar-pattern{
+    height: 28px;
+    max-height: 28px;
+    /* background-color: green; */
+}
+content {
+    position: absolute;
+    top: 64px;
+    left: var(--sidebar-width);
+}
+.calc-size{
+    width: calc(100% - var(--sidebar-width));
+    height: calc(100% - 64px);
+}
+.calc-h{
+    height: calc(100% - 64px);
+}
+.calc-w{
+    width: calc(100% - var(--sidebar-width));
+}
+div.calc-size#content{
+    width: calc(100% - var(--sidebar-width));
 }
