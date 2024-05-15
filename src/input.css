@@ -40,3 +40,14 @@ content {
 div.calc-size#content{
     width: calc(100% - var(--sidebar-width));
 }
+#pane-content{
+    width: 100%;
+    height: calc(100% - 55px);
+    border-radius: 0px !important;
+}
+
+#pane-actions > div.btn{
+    max-height: 32px !important;
+    max-width:  32px !important;
+    background-color: purple;
+}

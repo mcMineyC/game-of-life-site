@@ -1,10 +1,3 @@
-var list = [
-    {
-        "id": "1",
-        "name": "Pattern 1"
-    }
-]
-
 function populatePane(list){
     var pane = document.querySelector('#pane-content');
     /*pane.innerHTML = `
@@ -19,4 +12,3 @@ function populatePane(list){
         pane.innerHTML += message.data;
     }
 }
-populatePane(list);

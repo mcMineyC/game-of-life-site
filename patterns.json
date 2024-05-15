@@ -1,0 +1,44 @@
+{
+    "patterns": [
+        {
+            "id": "1",
+            "name": "Pattern 1"
+        },
+        {
+            "id": "2",
+            "name": "Pattern 2"
+        },
+        {
+            "id": "3",
+            "name": "Pattern 3"
+        },
+        {
+            "id": "4",
+            "name": "Pattern 4"
+        },
+        {
+            "id": "5",
+            "name": "Pattern 5"
+        },
+        {
+            "id": "6",
+            "name": "Pattern 6"
+        },
+        {
+            "id": "7",
+            "name": "Pattern 7"
+        },
+        {
+            "id": "8",
+            "name": "Pattern 8"
+        },
+        {
+            "id": "9",
+            "name": "Pattern 9"
+        },
+        {
+            "id": "10",
+            "name": "Pattern 10"
+        }
+    ]
+}
