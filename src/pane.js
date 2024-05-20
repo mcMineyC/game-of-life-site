@@ -1,3 +1,9 @@
+function renamePattern(id){
+    var entry = document.querySelector(`#pane-entry-${id}-text`);
+    var name = entry.innerText;
+    console.log(entry)
+    entry.innerHTML = `<input id="pane-entry-${id}-input" class="input input-primary" type="text" value="${name}">`;
+}
 function populatePane(list){
     var pane = document.querySelector('#pane-content');
     /*pane.innerHTML = `

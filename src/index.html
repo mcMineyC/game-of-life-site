@@ -25,9 +25,9 @@
         <div id="left-pane" class="left-pane bg-base-300 flex-initial items-stretch">
             <div id="pane-header" class="flex flex-row">
                 <article id="pane-title" class="w-full prose prose-xl max-h-full pt-3 pl-2 pr-2 flex-1">Header</article>
-                <div id="pane-actions" class="flex pt-3 pr-2">
-                    <span class="material-symbols-outlined self-center">add</span>
-                    <span class="material-symbols-outlined self-center">refresh</span>
+                <div id="pane-actions" class="flex pt-3 pr-2 select-none">
+                    <span class="material-symbols-outlined self-center cursor-pointer">add</span>
+                    <span class="material-symbols-outlined self-center cursor-pointer" onclick="refreshPatterns()">refresh</span>
                 </div>
             </div>
             <div id="pane-content" class="p-2 prose prose-md w-full skeleton"></div>
@@ -38,7 +38,7 @@
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="populate_pane.js"></script>
+<script src="pane.js"></script>
 <script src="paneworker.js"></script>
 <script src="index.js"></script>
 </html>
