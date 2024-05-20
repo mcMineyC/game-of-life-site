@@ -12,6 +12,7 @@ body{
 
 .left-pane{
     width: var(--sidebar-width);
+    height: calc(100vh - 64px);
 }
 .divider-none{
     margin-top: 0rem !important;
@@ -44,10 +45,15 @@ div.calc-size#content{
     width: 100%;
     height: calc(100% - 55px);
     border-radius: 0px !important;
+    overflow-y: scroll;
 }
 
 #pane-actions > div.btn{
     max-height: 32px !important;
     max-width:  32px !important;
     background-color: purple;
+}
+
+.pane-entry-text{
+    padding-right: 4px;
 }
