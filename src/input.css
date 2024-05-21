@@ -128,10 +128,18 @@ div#navbar-buttons > div.tabs > * {
     /* background-color: red; */
 }
 
+#lexicon-details-header{
+    align-self: center;
+}
+
 .lexicon-details-header, .lexicon-details-header > * {
     margin: 0px;
 }
 
 .lexicon-entry{
     margin: 4px;
+}
+
+.hidden {
+    display: none !important;
 }

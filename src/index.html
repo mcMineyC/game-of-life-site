@@ -47,15 +47,17 @@
                 <h1 class="text-2xl font-extrabold">Lexicon</h2>
                 <label class="input input-bordered flex items-center gap-2">
                     <input id="lexicon-search-box" type="text" class="grow" placeholder="Search" />
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" id="lexicon-search-icon" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                    <span id="lexicon-search-cancel-icon" class="hidden btn btn-sm btn-circle btn-ghost flex" onclick="clearSearchBox()"><span class="material-symbols-outlined self-center">cancel</span></span>
                 </label>
             </div>
             <div class="lexicon-body flex flex-row">
                 <div id="lexicon-sidebar" class="skeleton">
                 </div>
                 <div id="lexicon-content" class="p-4 prose prose-md">
-                    <div class="line-clamp-1 w-full lexicon-details-header">
-                        <h2 id="lexicon-details-header">Lexicon</h2>
+                    <div class="line-clamp-1 w-full flex lexicon-details-header">
+                        <h2 id="lexicon-details-header" class="flex-1">Lexicon</h2>
+                        <div id="lexicon-details-actions" class="btn btn-primary hidden">Select</div>
                     </div>
                     <p id="lexicon-details-body" class="text-wrap">Click on a pattern to view its description.</p>
                 </div>

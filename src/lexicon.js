@@ -90,6 +90,7 @@ function attachLexiconListeners(){
         });
     });*/
 }
+
 function searchKeydown(e){
     if(e.key == "Enter" && e.target.value == ""){
         window.lexiworker.postMessage({
@@ -102,6 +103,40 @@ function searchKeydown(e){
             type: "search",
             query: e.target.value,
             backendUrl: `http://${url}:5000`
+        });
+    }else if(e.key == "Escape"){
+        e.target.value = "";
+        window.lexiworker.postMessage({
+            type: "populate",
+            list: window.lexicon
+        });
+    }else if(e.target.value == ""){
+        if(!document.querySelector("#lexicon-search-cancel-icon").classList.contains("hidden")){
+            document.querySelector("#lexicon-search-cancel-icon").classList.add("hidden");
+            document.querySelector("#lexicon-search-icon").classList.remove("hidden");
+            window.lexiworker.postMessage({
+                type: "populate",
+                list: window.lexicon
+            });
+        }
+    }else{
+        if(document.querySelector("#lexicon-search-cancel-icon").classList.contains("hidden")){
+            document.querySelector("#lexicon-search-cancel-icon").classList.remove("hidden");
+            document.querySelector("#lexicon-search-icon").classList.add("hidden");
+        }
+    }
+}
+
+function clearSearchBox(){
+    var sb = document.querySelector('#lexicon-search-box');
+    sb.value = "";
+
+    if(!document.querySelector("#lexicon-search-cancel-icon").classList.contains("hidden")){
+        document.querySelector("#lexicon-search-cancel-icon").classList.add("hidden");
+        document.querySelector("#lexicon-search-icon").classList.remove("hidden");
+        window.lexiworker.postMessage({
+            type: "populate",
+            list: window.lexicon
         });
     }
 }
