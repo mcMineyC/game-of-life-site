@@ -12,4 +12,11 @@ function refreshPatterns() {
     }).catch((error) => {
         console.error(error);
     });
+    axios.get(`http://${url}:5000/lexicon/get`).then((response) => {
+        var lexicon = response.data.patterns;
+        window.lexicon = lexicon;
+        console.log(lexicon);
+    }).catch((error) => {
+        console.error(error);
+    });
 }
