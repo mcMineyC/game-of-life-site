@@ -113,6 +113,10 @@ div#navbar-buttons > div.tabs > * {
     height: calc(100% - 48px);
 }
 
+#lexicon-details-body{
+    word-wrap: break-word;
+}
+
 #lexicon-sidebar {
     width: 250px;
     min-width: 250px;
@@ -124,7 +128,7 @@ div#navbar-buttons > div.tabs > * {
 
 #lexicon-content{
     width: 100%;
-    max-width: 100%;
+    max-width: calc(100% - 250px);
     /* background-color: red; */
 }
 
@@ -142,4 +146,10 @@ div#navbar-buttons > div.tabs > * {
 
 .hidden {
     display: none !important;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }

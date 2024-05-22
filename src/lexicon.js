@@ -56,6 +56,7 @@ function populateLexiconPane(){
                 header.innerHTML = entry['name'];
                 var body = `Created by: ${entry["creator"]}<br>RLE: ${entry["rle"]}<br>Width: ${entry["xbounds"]}<br>Height: ${entry["ybounds"]}`
                 document.querySelector("#lexicon-details-body").innerHTML = body
+                document.querySelector("#lexicon-details-actions").classList.remove("hidden");
                 break;
             case "search":
                 var entry = message.data.entry;
@@ -73,6 +74,7 @@ function attachLexiconListeners(){
         e.querySelector('div').addEventListener('click', (e) => {
             console.log(e.target)
                 var hash = e.target.getAttribute('data-hash')
+                window.selected_hash = hash;
                 window.lexiworker.postMessage({
                     type: "find",
                     hash: hash,
@@ -111,14 +113,7 @@ function searchKeydown(e){
             list: window.lexicon
         });
     }else if(e.target.value == ""){
-        if(!document.querySelector("#lexicon-search-cancel-icon").classList.contains("hidden")){
-            document.querySelector("#lexicon-search-cancel-icon").classList.add("hidden");
-            document.querySelector("#lexicon-search-icon").classList.remove("hidden");
-            window.lexiworker.postMessage({
-                type: "populate",
-                list: window.lexicon
-            });
-        }
+        clearSearchBox();
     }else{
         if(document.querySelector("#lexicon-search-cancel-icon").classList.contains("hidden")){
             document.querySelector("#lexicon-search-cancel-icon").classList.remove("hidden");

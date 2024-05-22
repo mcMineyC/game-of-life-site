@@ -16,5 +16,42 @@ function populatePane(list){
         pane.classList.remove('skeleton');
         pane.innerHTML = '<div class="divider divider-none"></div>';
         pane.innerHTML += message.data;
+        attachPaneListeners();
     }
+}
+function attachPaneListeners(){
+    var entries = document.querySelectorAll('.pane-entry-text');
+    entries.forEach((entry) => {
+        entry.addEventListener('click', (event) => {
+            var id = entry.getAttribute('data-id');
+            var name = entry.getAttribute('data-name');
+            loadPattern(id, 'patterns');
+        });
+    });
+}
+
+function loadPattern(id, source){
+    if(id == undefined || source == undefined){
+        return;
+    }
+    axios.get(`http://${url}:5000/${source}/get-named?id=${id}`).then((response) => {
+                console.log(response)
+                if(response.data.success){
+                    var pattern = response.data.result;
+                    var name = pattern.name;
+                    var rle = pattern.rle;
+                    var creator = pattern.creator;
+                    var width = pattern.xbounds;
+                    var height = pattern.ybounds;
+                    var body = `Created by: ${creator}\nWidth: ${width}\nHeight: ${height}\nRLE: ${rle}`;
+                    document.querySelector('#advanced-textarea').value = body;
+                    var header = document.querySelector('#pane-title');
+                    header.innerHTML = name.substring(0,1).toUpperCase()+name.substring(1);
+                }else{
+                    alert(response.data.error + " " + id);
+                }
+            }).catch((error) => {
+                alert(error);
+                console.error(error);
+            })
 }

@@ -25,7 +25,7 @@
     <div class="flex flex-row flex-1">
         <div id="left-pane" class="left-pane bg-base-300 flex-initial items-stretch flex flex-col">
             <div id="pane-header" class="flex flex-row">
-                <article id="pane-title" class="w-full prose prose-xl max-h-full pt-3 pl-2 pr-2 flex-1">Header</article>
+                <article id="pane-title" class="w-full prose prose-xl max-h-full pt-3 pl-2 pr-2 flex-1 font-bold">Patterns</article>
                 <div id="pane-actions" class="flex pt-3 pr-2 select-none">
                     <span class="material-symbols-outlined self-center cursor-pointer">add</span>
                     <span class="material-symbols-outlined self-center cursor-pointer" onclick="refreshPatterns()">refresh</span>
@@ -57,7 +57,9 @@
                 <div id="lexicon-content" class="p-4 prose prose-md">
                     <div class="line-clamp-1 w-full flex lexicon-details-header">
                         <h2 id="lexicon-details-header" class="flex-1">Lexicon</h2>
-                        <div id="lexicon-details-actions" class="btn btn-primary hidden">Select</div>
+                        <div id="lexicon-details-actions" class="hidden">
+                            <div id="lexicon-details-actions-select" class="btn btn-primary" onclick="loadPattern(window.selected_hash, 'lexicon')">Select</div>
+                        </div>
                     </div>
                     <p id="lexicon-details-body" class="text-wrap">Click on a pattern to view its description.</p>
                 </div>
