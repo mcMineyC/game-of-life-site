@@ -11,13 +11,13 @@ function populatePane(list){
     `;*/
     pane.innerHTML = "";
     const myWorker = new Worker('paneworker.js');
-    myWorker.postMessage(list);
     myWorker.onmessage = (message) => {
         pane.classList.remove('skeleton');
         pane.innerHTML = '<div class="divider divider-none"></div>';
         pane.innerHTML += message.data;
         attachPaneListeners();
     }
+    myWorker.postMessage(list);
 }
 function attachPaneListeners(){
     var entries = document.querySelectorAll('.pane-entry-text');
