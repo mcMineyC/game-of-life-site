@@ -6,7 +6,7 @@ function openLexicon(){
 function populateLexiconPane(){
     var pane = document.querySelector('#lexicon-sidebar');
     if(window.lexicon == undefined){
-        axios.get(`http://${url}:5000/lexicon/get`).then((response) => {
+        axios.get(`${url}/lexicon/get`).then((response) => {
             var lexicon = response.data.patterns;
             window.lexicon = lexicon;
             console.log(lexicon);
@@ -104,7 +104,7 @@ function searchKeydown(e){
         window.lexiworker.postMessage({
             type: "search",
             query: e.target.value,
-            backendUrl: `http://${url}:5000`
+            backendUrl: url
         });
     }else if(e.key == "Escape"){
         e.target.value = "";

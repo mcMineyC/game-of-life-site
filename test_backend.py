@@ -1,4 +1,4 @@
-from flask import Flask
+"""from flask import Flask
 from flask_cors import CORS, cross_origin
 import json
 
@@ -22,3 +22,8 @@ def get_patterns():
 
 if __name__ == '__main__':
     app.run(port=port,debug=True)
+"""
+print("""
+    ----- DO NOT USE THIS FILE. ------
+    Only use the backend.py from Game_Of_Life!!!
+""")

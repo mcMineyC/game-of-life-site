@@ -34,7 +34,7 @@ function loadPattern(id, source){
     if(id == undefined || source == undefined){
         return;
     }
-    axios.get(`http://${url}:5000/${source}/get-named?id=${id}`).then((response) => {
+    axios.get(`${url}/${source}/get-named?id=${id}`).then((response) => {
                 console.log(response)
                 if(response.data.success){
                     var pattern = response.data.result;
