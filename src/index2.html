@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title></title>
+</head>
+
+<body class="flex flex-col h-full">
+    <div class="navbar bg-neutral">
+        <div class="flex-1">
+            <div class="btn rounded-xl">Run <span class="material-symbols-outlined">cloud_upload</span></div>
+        </div>
+        <div id="navbar-buttons" class="flex-row flex-none">
+            <div id="lexicon-button" class="btn btn-neutral" onclick="openLexicon()">Lexicon <span class="material-symbols-outlined">menu_book</span></div>
+            <div role="tablist" class="tabs tabs-boxed">
+                <a role="tab" class="tab">Normal</a>
+                <a role="tab" class="tab tab-active">Advanced</a>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row flex-1">
+        <div id="left-pane" class="left-pane bg-base-300 flex-initial items-stretch flex flex-col">
+            <div id="pane-header" class="flex flex-row">
+                <article id="pane-title" class="w-full prose prose-xl max-h-full pt-3 pl-2 pr-2 flex-1 font-bold">Patterns</article>
+                <div id="pane-actions" class="flex pt-3 pr-2 select-none">
+                    <span class="material-symbols-outlined self-center cursor-pointer">add</span>
+                    <span class="material-symbols-outlined self-center cursor-pointer" onclick="refreshPatterns()">refresh</span>
+                </div>
+            </div>
+            <div id="pane-content" class="p-2 prose prose-md w-full skeleton"></div>
+        </div>
+        <div id="content" class="flex-1">
+            <textarea id="advanced-textarea" class="textarea textarea-bordered w-full h-full" placeholder="RLE goes here..."></textarea>
+        </div>
+    </div>
+    <div id="translate-button" class="btn btn-primary text-primary-content">Translator</div>
+    <dialog id="lexicon-popup" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <form method="dialog">
+              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <div class="modal-header flex flex-row">
+                <h1 class="text-2xl font-extrabold">Lexicon</h2>
+                <label class="input input-bordered flex items-center gap-2">
+                    <input id="lexicon-search-box" type="text" class="grow" placeholder="Search" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" id="lexicon-search-icon" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                    <span id="lexicon-search-cancel-icon" class="hidden btn btn-sm btn-circle btn-ghost flex" onclick="clearSearchBox()"><span class="material-symbols-outlined self-center">cancel</span></span>
+                </label>
+            </div>
+            <div class="lexicon-body flex flex-row">
+                <div id="lexicon-sidebar" class="skeleton">
+                </div>
+                <div id="lexicon-content" class="p-4 prose prose-md">
+                    <div class="line-clamp-1 w-full flex lexicon-details-header">
+                        <h2 id="lexicon-details-header" class="flex-1">Lexicon</h2>
+                        <div id="lexicon-details-actions" class="hidden">
+                            <div id="lexicon-details-actions-select" class="btn btn-primary" onclick="loadPattern(window.selected_hash, 'lexicon')">Select</div>
+                        </div>
+                    </div>
+                    <p id="lexicon-details-body" class="text-wrap">Click on a pattern to view its description.</p>
+                </div>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="pane.js"></script>
+<script src="lexicon.js"></script>
+<script src="index.js"></script>
+</html>

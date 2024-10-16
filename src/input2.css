@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    --sidebar-width: 300px;
+}
+
+body {
+    height: 100vh !important;
+    overflow: hidden;
+}
+
+.left-pane {
+    width: var(--sidebar-width);
+    height: calc(100vh - 64px);
+}
+
+.divider-none {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+.sidebar-pattern {
+    height: 28px;
+    max-height: 28px;
+    /* background-color: green; */
+}
+
+content {
+    position: absolute;
+    top: 64px;
+    left: var(--sidebar-width);
+}
+
+.calc-size {
+    width: calc(100% - var(--sidebar-width));
+    height: calc(100% - 64px);
+}
+
+.calc-h {
+    height: calc(100% - 64px);
+}
+
+.calc-w {
+    width: calc(100% - var(--sidebar-width));
+}
+
+div.calc-size#content {
+    width: calc(100% - var(--sidebar-width));
+}
+
+#pane-content {
+    width: 100%;
+    height: calc(100% - 55px);
+    border-radius: 0px !important;
+    overflow-y: scroll;
+}
+
+#pane-actions>div.btn {
+    max-height: 32px !important;
+    max-width: 32px !important;
+    background-color: purple;
+}
+
+.pane-entry-text {
+    padding-right: 4px;
+}
+
+div#translate-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 300px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+div#navbar-buttons > * {
+    margin-right: 8px;
+}
+
+div#navbar-buttons > :last-child {
+    margin-right: 0px;
+}
+
+div#navbar-buttons > div.tabs > * {
+    height: 40px;
+}
+
+@media (min-width: 640px) {
+    #lexicon-popup > div.modal-box {
+        max-width: unset;
+        max-height: unset;
+        height: calc(100% - 96px);
+    }
+}
+
+.lexicon-body, #lexicon-popup > .modal-box > .modal-header {
+    margin-right: 1rem;
+}
+
+#lexicon-popup > .modal-box > .modal-header {
+    /* background-color: red; */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem;
+}
+
+.lexicon-body {
+    /* background-color: green; */
+    height: calc(100% - 48px);
+}
+
+#lexicon-details-body{
+    word-wrap: break-word;
+}
+
+#lexicon-sidebar {
+    width: 250px;
+    min-width: 250px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* background-color: blue; */
+}
+
+#lexicon-content{
+    width: 100%;
+    max-width: calc(100% - 250px);
+    /* background-color: red; */
+}
+
+#lexicon-details-header{
+    align-self: center;
+}
+
+.lexicon-details-header, .lexicon-details-header > * {
+    margin: 0px;
+}
+
+.lexicon-entry{
+    margin: 4px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
