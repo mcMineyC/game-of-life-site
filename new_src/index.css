@@ -1,0 +1,47 @@
+
+html {
+    --topheight: 50px;
+    --sidewidth: 30svw;
+    --dividewidth: 1px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.topbar {
+    width:100%;
+    height: var(--topheight);
+    background-color: aqua;
+}
+
+.sidebar {
+    display: inline-block;
+    position: fixed;
+    margin: 0;
+    width: var(--sidewidth);
+    height: calc(100vh - var(--topheight));
+    overflow-y: scroll;
+    background-color: blue;
+}
+
+.divider {
+    display: inline-block;
+    width: var(--dividewidth);
+    height: calc(100vh - var(--topheight));
+    margin: 0;
+    background-color: black;
+}
+
+.mainbox {
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    margin: 0;
+    width: calc( 100% - var(--sidewidth) - var(--dividewidth));
+    height: calc(100vh - var(--topheight));
+    background-color: rgb(0, 255, 213);
+}
