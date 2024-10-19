@@ -4,7 +4,7 @@
   "main": "draw.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tailwindcss build src/input.css -o src/output.css"
+    "build": "tailwindcss build old_src/input.css -o old_src/output.css"
   },
   "author": "",
   "license": "ISC",
