@@ -1,8 +1,8 @@
 
 html {
     --topheight: 50px;
-    --sidewidth: 30svw;
-    --dividewidth: 1px;
+    --sidewidth: 30vw;
+    --dividewidth: 3px;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
 .topbar {
     width:100%;
     height: var(--topheight);
-    background-color: aqua;
+    background-color: rgb(0, 59, 93);
 }
 
 .sidebar {
@@ -24,16 +24,21 @@ body {
     margin: 0;
     width: var(--sidewidth);
     height: calc(100vh - var(--topheight));
+    overflow-x: hidden;
     overflow-y: scroll;
-    background-color: blue;
+    background-color: rgb(0, 0, 129);
 }
 
 .divider {
     display: inline-block;
+    position: fixed;
+    left: var(--sidewidth);
     width: var(--dividewidth);
     height: calc(100vh - var(--topheight));
     margin: 0;
     background-color: black;
+    z-index: 1;
+    cursor: col-resize;
 }
 
 .mainbox {
@@ -41,7 +46,10 @@ body {
     position: fixed;
     right: 0;
     margin: 0;
-    width: calc( 100% - var(--sidewidth) - var(--dividewidth));
+    box-sizing: border-box;
+    width: calc(100% - var(--sidewidth) - var(--dividewidth));
     height: calc(100vh - var(--topheight));
-    background-color: rgb(0, 255, 213);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: rgb(106, 0, 255);
 }

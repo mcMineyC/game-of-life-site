@@ -1,0 +1,6 @@
+Sidebar resizing code was taken from: https://github.com/Tivotal/Resizable-Sidebar-Menu-with-Theme-Toggle-in-HTML-CSS-and-JavaScript
+All this fancy JS backend stuff is my McMineyC
+UI is by Mixel-MurP-427
+
+
+TODO move this into comments
