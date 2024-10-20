@@ -27,7 +27,10 @@ function refreshPatterns() {
 //All code above is by McMineyC
 //All code below is by Mixel-MurP-427 and possibly inspired by Tivotal (see credits)
 
+console.log('Javascript is online!')
+
 function moveDivider () {
+    
 
     var Divider = document.querySelector(".divider");
     var sideBar = document.querySelector(".sidebar");
@@ -37,19 +40,14 @@ function moveDivider () {
         let size = `${e.x}px`;
         sideBar.style.width = size;
         Divider.style.left = size;
-        main.style.width = `calc(100% - ${size})`;
+        mainBox.style.width = `calc(100% - ${size})`;
     };
 
-    Divider.addEventListener("mousedown", () => {
+    //Divider.addEventListener("mousedown", () => {
         document.addEventListener("mousemove", resize, false);
         console.log('moving');
-        },
-      false
-    );
+        };
 
-
-    Divider.addEventListener("mouseup", () => {
-        document.removeEventListener("mousemove", resize, false);
-    });
-
-};
+Divider.addEventListener("mouseup", () => {
+    document.removeEventListener("mousemove", resize, false);
+});
