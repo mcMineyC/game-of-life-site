@@ -22,32 +22,37 @@ function refreshPatterns() {
     });
 }
 
-
-
 //All code above is by McMineyC
-//All code below is by Mixel-MurP-427 and possibly inspired by Tivotal (see credits)
+//All code below is by Mixel-MurP-427
 
-console.log('Javascript is online!')
+var Divider
+var sideBar
+var mainBox
 
-function moveDivider () {
-    
+function body_loaded () {
+    resizablilty();
+};
 
-    var Divider = document.querySelector(".divider");
-    var sideBar = document.querySelector(".sidebar");
-    var mainBox = document.querySelector(".mainbox");
 
-    function resize (e) {
-        let size = `${e.x}px`;
-        sideBar.style.width = size;
-        Divider.style.left = size;
-        mainBox.style.width = `calc(100% - ${size})`;
-    };
+//fires once to initialize sidebar resizing feature
+function resizablilty () { // creadit: https://github.com/Tivotal/Resizable-Sidebar-Menu-with-Theme-Toggle-in-HTML-CSS-and-JavaScript
+    Divider = document.querySelector(".divider");
+    sideBar = document.querySelector(".sidebar");
+    mainBox = document.querySelector(".mainbox");
 
-    //Divider.addEventListener("mousedown", () => {
+    Divider.addEventListener("mousedown", () => {
         document.addEventListener("mousemove", resize, false);
-        console.log('moving');
-        };
+        });
 
-Divider.addEventListener("mouseup", () => {
-    document.removeEventListener("mousemove", resize, false);
-});
+    document.addEventListener("mouseup", () => {
+        document.removeEventListener("mousemove", resize, false);
+    });
+};
+
+function resize (e) {
+    let size = `${e.x}px`;
+    let mainWidth = getComputedStyle(document.querySelector("html")).getPropertyValue("--dividewidth");
+    sideBar.style.width = size;
+    Divider.style.left = size;
+    mainBox.style.width = `calc(100% - ${size} - ${mainWidth})`;
+};
