@@ -1,7 +1,7 @@
 
 html {
     --topheight: 50px;
-    --sidewidth: 30vw;
+    --sidewidth: 25vw;
     --dividewidth: 3px;
 }
 
@@ -15,7 +15,7 @@ body {
 .topbar {
     width:100%;
     height: var(--topheight);
-    background-color: rgb(0, 59, 93);
+    background-color: rgb(0, 158, 96);
 }
 
 .sidebar {
@@ -26,7 +26,7 @@ body {
     height: calc(100vh - var(--topheight));
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: rgb(0, 0, 129);
+    background-color: rgb(211, 211, 211);
 }
 
 .divider {
@@ -51,5 +51,5 @@ body {
     height: calc(100vh - var(--topheight));
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: rgb(106, 0, 255);
+    background-color: rgb(255, 255, 255);
 }
