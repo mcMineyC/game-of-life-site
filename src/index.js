@@ -27,18 +27,23 @@ function refreshPatterns() {
 
 var Divider
 var sideBar
+var listSideBar
 var mainBox
 
 function body_loaded () {
+    Divider = document.getElementById("divider")
+    sideBar = document.getElementById("sidebar")
+    listSideBar = document.getElementById("listsidebar")
+    mainBox = document.getElementById("mainbox")
+
     resizablilty();
+    add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
 };
 
 
+//TODO add border limitations so that divider cannot slide all the way to the edge of screen. use 10px marign or so.
 //fires once to initialize sidebar resizing feature
 function resizablilty () { // creadit: https://github.com/Tivotal/Resizable-Sidebar-Menu-with-Theme-Toggle-in-HTML-CSS-and-JavaScript
-    Divider = document.querySelector(".divider");
-    sideBar = document.querySelector(".sidebar");
-    mainBox = document.querySelector(".mainbox");
 
     Divider.addEventListener("mousedown", () => {
         document.addEventListener("mousemove", resize, false);
@@ -55,4 +60,15 @@ function resize (e) {
     sideBar.style.width = size;
     Divider.style.left = size;
     mainBox.style.width = `calc(100% - ${size} - ${mainWidth})`;
+};
+
+
+//input: list of patterns with info to display
+//returns: nothing
+//result: adds buttons/listItems to sidebar with info
+function add_pattern(apPatterns) {
+    let item = document.createElement("div")
+    item.innerHTML = `dis a pattern`
+    item.className = "pattern_button";
+    listSideBar.appendChild(item)
 };

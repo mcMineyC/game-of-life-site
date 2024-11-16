@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./index.css">
+    <script src="./testyJSON.js"></script> <!--for testing only-->
     <script src="./index.js"></script>
 
     <title>Conway's Game of Life</title>
@@ -15,11 +16,15 @@
 
 <body onload="body_loaded();">
 
-    <div class="topbar">this is the topbar</div>
+    <div id="topbar">this is the topbar</div>
     <div style="width: 100%;">
-        <div class="sidebar">this is the sidebar</div>
-        <div class="divider"></div>
-        <div class="mainbox">this is the mainbox</div>
+        <div id="sidebar">
+            <div id="listsidebar">
+                <div class="pattern_button">rigid</div>
+            </div>
+        </div>
+        <div id="divider"></div>
+        <div id="mainbox">this is the mainbox</div>
     </div>
 
 
