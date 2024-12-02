@@ -1,32 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="LifeViewer" content="viewer textarea" />
+        <!--idk why i need the meta tag but it said to use it-->
+        <script src="lv-plugin.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./index.css" />
+        <script src="./testyJSON.js"></script>
+        <!--for testing only-->
+        <script src="./index.js"></script>
 
-    <link rel="stylesheet" href="./index.css">
-    <script src="./testyJSON.js"></script> <!--for testing only-->
-    <script src="./index.js"></script>
+        <title>Conway's Game of Life</title>
+    </head>
 
-    <title>Conway's Game of Life</title>
-</head>
-
-
-
-<body onload="body_loaded();">
-
-    <div id="topbar">this is the topbar</div>
-    <div style="width: 100%;">
-        <div id="sidebar">
-            <div id="listsidebar">
-                <div class="pattern_button">rigid</div>
+    <body onload="body_loaded();">
+        <div id="topbar">this is the topbar</div>
+        <div style="width: 100%">
+            <div id="sidebar">
+                <div id="listsidebar">
+                    <div class="pattern_button">rigid</div>
+                </div>
+            </div>
+            <div id="divider"></div>
+            <div id="mainbox">
+                <div class="viewer">
+                    <textarea style="display: none">bo$2bo$3!</textarea>
+                    <canvas width="0" height="0"></canvas>
+                </div>
             </div>
         </div>
-        <div id="divider"></div>
-        <div id="mainbox">this is the mainbox</div>
-    </div>
-
-
-</body>
+        <script>
+            // This is to make sure it sets it asap because the life viewer gets screwy if it has 0 as dimensions
+            // Yes, I know this code is amazing and definitely the most optimal version possible :wink:
+            let canvas = document.querySelector("canvas"); // I just used let because you did
+            let htmlStyle = getComputedStyle(document.querySelector("html"));
+            var width =
+                window.innerWidth - // Width of viewport
+                (window.innerWidth / 100) * // Gets the vw unit
+                    parseInt(htmlStyle.getPropertyValue("--sidewidth")) - // turns the vw unit into px since that's how it's set
+                parseInt(htmlStyle.getPropertyValue("--dividewidth")); // accounts for the divider
+            var height =
+                window.innerHeight -
+                parseInt(htmlStyle.getPropertyValue("--topheight")); // getPropertyValkue returns (x)px so it needs to be parsed into int for math
+            canvas.height = height;
+            canvas.width = width;
+            console.log("Set life viewer dimensions: ", width, height);
+        </script>
+    </body>
 </html>
