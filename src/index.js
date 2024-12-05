@@ -25,6 +25,11 @@ function refreshPatterns() {
 //All code above is by McMineyC
 //All code below is by Mixel-MurP-427
 
+
+var list_counter = 0 //counts number of pattern items in sidebar
+const light_color = 'inherit'
+const dark_color = 'rgb(190, 215, 190)'
+//global elements
 var Divider
 var sideBar
 var listSideBar
@@ -37,6 +42,9 @@ function body_loaded () {
     mainBox = document.getElementById("mainbox")
 
     resizablilty();
+    add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
+    add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
+    add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
     add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
 };
 
@@ -63,12 +71,15 @@ function resize (e) {
 };
 
 
-//input: list of patterns with info to display
-//returns: nothing
-//result: adds buttons/listItems to sidebar with info
+//input: pattern with info to display
+//result: adds button-list-item-pattern thingy to sidebar with info
 function add_pattern(apPatterns) {
+    list_counter++;
     let item = document.createElement("div")
-    item.innerHTML = `dis a pattern`
+    let myName = `${apPatterns['name']} | ${apPatterns['xbounds']}x${apPatterns['ybounds']} | ${apPatterns['creator']}`;
+    item.innerHTML = myName
+    item.title = myName;
     item.className = "pattern_button";
+    item.style.backgroundColor = list_counter%2===0 ? dark_color : light_color; //create alternating colors
     listSideBar.appendChild(item)
 };
