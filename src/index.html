@@ -39,32 +39,12 @@
         <div id="divider"></div>
         <div id="mainbox">
             <div class="viewer">
-                <textarea>x = 3, y = 3, rule = B3/S23
+                <textarea style="display: none;">x = 3, y = 3, rule = B3/S23
 bo$2bo$3o!</textarea>
                 <canvas width="10" height="10"></canvas>
             </div>
         </div>
     </div>
-    <script>
-        // This is to make sure it sets it asap because the life viewer gets screwy if it has 0 as dimensions
-        // Yes, I know this code is amazing and definitely the most optimal version possible :wink:
-        var canvas = document.querySelector("canvas");
-        let htmlStyle = getComputedStyle(document.querySelector("html"));
-        var width = //gets width of mainbox
-            window.innerWidth - // Width of viewport
-            (window.innerWidth / 100) * // Gets the vw unit
-                parseInt(htmlStyle.getPropertyValue("--sidewidth")) - // turns the vw unit into px since that's how it's set
-            parseInt(htmlStyle.getPropertyValue("--dividewidth")); // accounts for the divider
-        var height =
-            window.innerHeight -
-            parseInt(htmlStyle.getPropertyValue("--topheight")); // getPropertyValkue returns (x)px so it needs to be parsed into int for math
-        canvas.height = height;
-        canvas.width = width - getScrollbarWidth() - viewer_padding; //add extra padding on right side
-        console.log("Set life viewer dimensions: ", width, height);
-
-        // set 
-    </script>
-
 
 </body>
 </html>

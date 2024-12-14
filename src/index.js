@@ -42,12 +42,27 @@ var Divider;
 var sideBar;
 var listSideBar;
 var mainBox;
+var canvas;
+var htmlStyle;
 
 function body_loaded() {
-  Divider = document.getElementById("divider");
-  sideBar = document.getElementById("sidebar");
-  listSideBar = document.getElementById("listsidebar");
-  mainBox = document.getElementById("mainbox");
+    Divider = document.getElementById("divider");
+    sideBar = document.getElementById("sidebar");
+    listSideBar = document.getElementById("listsidebar");
+    mainBox = document.getElementById("mainbox");
+    canvas = document.querySelector("canvas");
+    htmlStyle = getComputedStyle(document.querySelector("html"));
+
+    // set heights of everything
+    let heights = window.innerHeight - document.getElementById("topbar").offsetHeight;
+    heights = `${heights}px`;
+    console.log(heights);
+    sideBar.style.height = heights;
+    Divider.style.height = heights;
+    mainBox.style.height = heights;
+    canvas.height = parseInt(heights);
+    canvas.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
+
 
     resizablilty();
     add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
@@ -74,9 +89,7 @@ function resizablilty() {
 
 function resize(e) {
   let size = `${e.x}px`;
-  let mainWidth = getComputedStyle(
-    document.querySelector("html"),
-  ).getPropertyValue("--dividewidth");
+  let mainWidth = htmlStyle.getPropertyValue("--dividewidth");
   if (window.innerWidth - e.x - parseInt(mainWidth) <= 50) {
     // If mainbox width is less than 20px, don't resize
     // mainbox calculation taken from below but replaced with absolute values
