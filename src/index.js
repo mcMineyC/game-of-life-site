@@ -42,15 +42,22 @@ var Divider;
 var sideBar;
 var listSideBar;
 var mainBox;
-var canvas;
+var lifeViewer;
+var patternTitleTxtarea;
+var viewerCache;
 var htmlStyle;
+var translator;
 
 function body_loaded() {
+    //set a whole bunch of vars for elements (is this too much?)
     Divider = document.getElementById("divider");
     sideBar = document.getElementById("sidebar");
     listSideBar = document.getElementById("listsidebar");
     mainBox = document.getElementById("mainbox");
-    canvas = document.querySelector("canvas");
+    lifeViewer = document.querySelector("canvas");
+    patternTitleTxtarea = document.querySelector(".pattern_title_txtarea");
+    viewerCache = document.querySelector(".viewer_cache");
+    translator = document.querySelector(".Translator");
     htmlStyle = getComputedStyle(document.querySelector("html"));
 
     // set heights of everything
@@ -60,8 +67,8 @@ function body_loaded() {
     sideBar.style.height = heights;
     Divider.style.height = heights;
     mainBox.style.height = heights;
-    canvas.height = parseInt(heights);
-    canvas.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
+    lifeViewer.height = parseInt(heights);
+    lifeViewer.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
 
 
     resizablilty();
@@ -72,7 +79,6 @@ function body_loaded() {
 }
 
 //--TODO-- add border limitations so that divider cannot slide all the way to the edge of screen. use 10px marign or so.
-// Done
 
 //fires once to initialize sidebar resizing feature
 function resizablilty() {
@@ -100,8 +106,8 @@ function resize(e) {
   mainBox.style.width = `calc(100% - ${size} - ${mainWidth})`;
 
   // Life viewer resize
-  canvas.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
-  canvas.height = parseInt(getComputedStyle(mainBox).height);
+  lifeViewer.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
+  lifeViewer.height = parseInt(getComputedStyle(mainBox).height);
 };
 
 //input: pattern with info to display
@@ -137,4 +143,23 @@ function getScrollbarWidth() {
 
   return scrollbarWidth;
     
+};
+
+function show_Game() {
+  lifeViewer.style.display = 'inline';
+  patternTitleTxtarea.style.display = 'none';
+  viewerCache.style.display = 'none';
+  translator.style.display = 'none';
+};
+function show_RLE() {
+  lifeViewer.style.display = 'none';
+  patternTitleTxtarea.style.display = 'inline-block';
+  viewerCache.style.display = 'inline-block';
+  translator.style.display = 'none';
+};
+function show_Translator() {
+  lifeViewer.style.display = 'none';
+  patternTitleTxtarea.style.display = 'none';
+  viewerCache.style.display = 'none';
+  translator.style.display = 'block';
 };

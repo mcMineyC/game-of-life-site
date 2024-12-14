@@ -25,9 +25,9 @@
 
     <div id="topbar">
         <div id="modes">
-            <button>Game</button>
-            <button>RLE</button>
-            <button>Translator</button>
+            <button onclick="show_Game();">Game</button>
+            <button onclick="show_RLE();">RLE</button>
+            <button onclick="show_Translator();">Translator</button>
         </div>
     </div>
     <div style="width: 100%;">
@@ -38,11 +38,13 @@
         </div>
         <div id="divider"></div>
         <div id="mainbox">
+            <textarea class="pattern_title_txtarea">This is the name of the pattern</textarea>
             <div class="viewer">
-                <textarea style="display: none;">x = 3, y = 3, rule = B3/S23
+                <textarea class="viewer_cache">x = 3, y = 3, rule = B3/S23
 bo$2bo$3o!</textarea>
                 <canvas width="10" height="10"></canvas>
             </div>
+            <div class="Translator">all of google translate in here</div>
         </div>
     </div>
 

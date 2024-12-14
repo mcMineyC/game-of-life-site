@@ -38,7 +38,6 @@ body {
     background-color: rgb(81, 234, 81);
     border: none;
     border-radius: 99999px;
-    border-box: box-sizing;
     cursor: pointer;
     font-size: inherit;
     transition-duration: 0.3s;
@@ -91,6 +90,17 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
+.pattern_title_txtarea {
+    display: none;
+}
+.viewer_cache {
+    display: none;
+}
+.Translator {
+    display: none;
+}
+
 
 .pattern_button {
     background-color: red; /*JS should ensure that buttons are NOT red*/
