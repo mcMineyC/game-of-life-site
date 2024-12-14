@@ -23,6 +23,27 @@ body {
     background-color: rgb(0, 158, 96);
 }
 
+#modes {
+    display: inline-block;
+    margin: 4px;
+    padding: 40px;
+    border-radius: 99999px;
+    background-color: rgb(148, 0, 158);
+}
+
+#modes > button {
+    margin: 4px;
+    padding: 3px;
+    padding-left: 6px;
+    padding-right: 7px;
+    background-color: rgb(158, 142, 0);
+    color: white;
+    border: none;
+    border-radius: 99999px;
+    cursor: pointer;
+    font-size: inherit;
+}
+
 #sidebar {
     display: inline-block;
     position: fixed;

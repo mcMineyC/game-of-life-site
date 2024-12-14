@@ -36,6 +36,7 @@ function refreshPatterns() {
 var list_counter = 0 //counts number of pattern items in sidebar
 const light_color = 'inherit'
 const dark_color = 'rgb(190, 215, 190)'
+const viewer_padding = 10; //slight limit on viewer width to act as padding-right
 //global elements
 var Divider;
 var sideBar;
@@ -86,10 +87,9 @@ function resize(e) {
   mainBox.style.width = `calc(100% - ${size} - ${mainWidth})`;
 
   // Life viewer resize
-  let canvas = document.querySelector(".viewer > canvas");
-  canvas.width = parseInt(getComputedStyle(mainBox).width);
+  canvas.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
   canvas.height = parseInt(getComputedStyle(mainBox).height);
-}
+};
 
 //input: pattern with info to display
 //result: adds button-list-item-pattern thingy to sidebar with info
@@ -102,4 +102,26 @@ function add_pattern(apPatterns) {
     item.className = "pattern_button";
     item.style.backgroundColor = list_counter%2===0 ? dark_color : light_color; //create alternating colors
     listSideBar.appendChild(item)
+};
+
+function getScrollbarWidth() {
+  // Creating invisible container
+  const outer = document.createElement('div');
+  outer.style.visibility = 'hidden';
+  outer.style.overflow = 'scroll'; // forcing scrollbar to appear
+  outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+  document.body.appendChild(outer);
+
+  // Creating inner element and placing it in the container
+  const inner = document.createElement('div');
+  outer.appendChild(inner);
+  
+  // Calculating difference between container's full width and the child width
+  const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+
+  // Removing temporary elements from the DOM
+  outer.parentNode.removeChild(outer);
+
+  return scrollbarWidth;
+    
 };
