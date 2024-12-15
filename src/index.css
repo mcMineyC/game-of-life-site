@@ -88,7 +88,7 @@ body {
     width: calc(100% - var(--sidewidth) - var(--dividewidth));
     height: 201px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 .pattern_title_txtarea {

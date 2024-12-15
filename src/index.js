@@ -68,7 +68,7 @@ function body_loaded() {
     Divider.style.height = heights;
     mainBox.style.height = heights;
     lifeViewer.height = parseInt(heights);
-    lifeViewer.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
+    lifeViewer.width = parseInt(getComputedStyle(mainBox).width);
 
 
     resizablilty();
@@ -106,7 +106,7 @@ function resize(e) {
   mainBox.style.width = `calc(100% - ${size} - ${mainWidth})`;
 
   // Life viewer resize
-  lifeViewer.width = parseInt(getComputedStyle(mainBox).width) - getScrollbarWidth();
+  lifeViewer.width = parseInt(getComputedStyle(mainBox).width);
   lifeViewer.height = parseInt(getComputedStyle(mainBox).height);
 };
 
@@ -123,43 +123,24 @@ function add_pattern(apPatterns) {
     listSideBar.appendChild(item)
 };
 
-function getScrollbarWidth() {
-  // Creating invisible container
-  const outer = document.createElement('div');
-  outer.style.visibility = 'hidden';
-  outer.style.overflow = 'scroll'; // forcing scrollbar to appear
-  outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
-  document.body.appendChild(outer);
-
-  // Creating inner element and placing it in the container
-  const inner = document.createElement('div');
-  outer.appendChild(inner);
-  
-  // Calculating difference between container's full width and the child width
-  const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
-
-  // Removing temporary elements from the DOM
-  outer.parentNode.removeChild(outer);
-
-  return scrollbarWidth;
-    
-};
-
 function show_Game() {
   lifeViewer.style.display = 'inline';
   patternTitleTxtarea.style.display = 'none';
   viewerCache.style.display = 'none';
   translator.style.display = 'none';
+  mainBox.style.overflowY = 'hidden';
 };
 function show_RLE() {
   lifeViewer.style.display = 'none';
   patternTitleTxtarea.style.display = 'inline-block';
   viewerCache.style.display = 'inline-block';
   translator.style.display = 'none';
+  mainBox.style.overflowY = 'scroll';
 };
 function show_Translator() {
   lifeViewer.style.display = 'none';
   patternTitleTxtarea.style.display = 'none';
   viewerCache.style.display = 'none';
   translator.style.display = 'block';
+  mainBox.style.overflowY = 'scroll';
 };
