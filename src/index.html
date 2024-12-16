@@ -25,9 +25,9 @@
 
     <div id="topbar">
         <div id="modes">
-            <button onclick="show_Game();">Game</button>
-            <button onclick="show_RLE();">RLE</button>
-            <button onclick="show_Translator();">Translator</button>
+            <button onclick="show_Game();" id="showGame" style="border-color: rgb(0, 60, 0);">Game</button>
+            <button onclick="show_RLE();" id="showRLE">RLE</button>
+            <button onclick="show_Translator();" id="showTranslator">Translator</button>
         </div>
     </div>
     <div style="width: 100%;">
@@ -38,7 +38,11 @@
         </div>
         <div id="divider"></div>
         <div id="mainbox">
-            <textarea class="pattern_title_txtarea">This is the name of the pattern</textarea>
+            <div class="RLE_modeTop">
+                Pattern name:<br/>
+                <textarea>This is the name of the pattern</textarea>
+                <button class="settings_button">Save [TODO]</button>
+            </div>
             <div class="viewer">
                 <textarea class="viewer_cache">x = 3, y = 3, rule = B3/S23
 bo$2bo$3o!</textarea>

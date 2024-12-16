@@ -47,6 +47,9 @@ var patternTitleTxtarea;
 var viewerCache;
 var htmlStyle;
 var translator;
+var showGame;
+var showRLE;
+var showTranslator;
 
 function body_loaded() {
     //set a whole bunch of vars for elements (is this too much?)
@@ -55,10 +58,13 @@ function body_loaded() {
     listSideBar = document.getElementById("listsidebar");
     mainBox = document.getElementById("mainbox");
     lifeViewer = document.querySelector("canvas");
-    patternTitleTxtarea = document.querySelector(".pattern_title_txtarea");
+    patternTitleTxtarea = document.querySelector(".RLE_modeTop");
     viewerCache = document.querySelector(".viewer_cache");
     translator = document.querySelector(".Translator");
     htmlStyle = getComputedStyle(document.querySelector("html"));
+    showGame = document.getElementById("showGame");
+    showRLE = document.getElementById("showRLE");
+    showTranslator = document.getElementById("showTranslator");
 
     // set heights of everything
     let heights = window.innerHeight - document.getElementById("topbar").offsetHeight;
@@ -123,7 +129,12 @@ function add_pattern(apPatterns) {
     listSideBar.appendChild(item)
 };
 
+const aGreen = 'rgb(0, 114, 68)';
+const darkerGreen = 'rgb(0, 60, 0)';
 function show_Game() {
+  showGame.style.borderColor = darkerGreen;
+  showRLE.style.borderColor = aGreen;
+  showTranslator.style.borderColor = aGreen;
   lifeViewer.style.display = 'inline';
   patternTitleTxtarea.style.display = 'none';
   viewerCache.style.display = 'none';
@@ -131,13 +142,20 @@ function show_Game() {
   mainBox.style.overflowY = 'hidden';
 };
 function show_RLE() {
+  showGame.style.borderColor = aGreen;
+  showRLE.style.borderColor = darkerGreen;
+  showTranslator.style.borderColor = aGreen;
   lifeViewer.style.display = 'none';
-  patternTitleTxtarea.style.display = 'inline-block';
-  viewerCache.style.display = 'inline-block';
+  patternTitleTxtarea.style.display = 'block';
+  viewerCache.style.display = 'block';
   translator.style.display = 'none';
   mainBox.style.overflowY = 'scroll';
+  document.querySelectorAll('textarea').forEach((el) => {el.style.width = mainBox.offsetWidth * 0.8 + 'px'});
 };
 function show_Translator() {
+  showGame.style.borderColor = aGreen;
+  showRLE.style.borderColor = aGreen;
+  showTranslator.style.borderColor = darkerGreen;
   lifeViewer.style.display = 'none';
   patternTitleTxtarea.style.display = 'none';
   viewerCache.style.display = 'none';

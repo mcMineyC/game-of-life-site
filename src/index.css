@@ -15,6 +15,11 @@ body {
     font-size: 18px;
 }
 
+textarea {
+    font-family: monospace;
+    display:block;
+    margin: 8px;
+}
 
 #topbar { /*  TODO change from class to id selector (if more efficient?)  */
     width:100%;
@@ -25,7 +30,7 @@ body {
 #modes {
     display: inline-block;
     margin: 8px;
-    padding: 5px;
+    padding: 2px;
     border-radius: 99999px;
     background-color: rgb(0, 114, 68);
 }
@@ -36,7 +41,7 @@ body {
     padding-left: 8px;
     padding-right: 8px;
     background-color: rgb(81, 234, 81);
-    border: none;
+    border: 3px solid rgb(0, 114, 68);
     border-radius: 99999px;
     cursor: pointer;
     font-size: inherit;
@@ -45,9 +50,7 @@ body {
 
 #modes > button:hover {
     background-color: rgb(183, 255, 183);
-    border: 10px solid black;
-    border-width: 3px;
-    border-color: rgb(0, 255, 0);
+    border: 3px solid rgb(0, 255, 0); /*does not work*/
 }
 
 /*#highlighter {
@@ -91,7 +94,7 @@ body {
     overflow-y: hidden;
 }
 
-.pattern_title_txtarea {
+.RLE_modeTop {
     display: none;
 }
 .viewer_cache {
@@ -111,4 +114,22 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor:pointer;
+}
+
+.settings_button {
+    display: block;
+    margin: 8px;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: rgb(77, 255, 89);
+    border: none;
+    border-radius: 99999px;
+    cursor: pointer;
+    font-size: inherit;
+    transition-duration: 0.3s;
+}
+
+.settings_button:hover {
+    background-color: rgb(156, 255, 162);
 }
