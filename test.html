@@ -20,17 +20,49 @@
 <body>
   <ul id="messages"></ul>
   <form id="form" action="">
-    <input id="event" autocomplete="off" />
-    <input id="input" autocomplete="off" /><button>Send</button>
+    <!--<input id="event" autocomplete="off" />-->
+      <input type="button" id="start_button" value="Start"onclick="send_start()"></input>
+      <input type="button" value="Test"onclick="test_button()"></input>
+    <input id="input" autocomplete="off" /><button id="send_button">Send</button>
   </form>
 <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
   <script>
     let counter = 0;
+    function send_start(){
+      socket.send('{"type":"start"}');
+    }
+    function test_button(){
+      socket.send('{"type": "setrle", "data": "bo$2bo$3o!"}');
+    }
 
-    const socket = io("ws://192.168.30.40:5000", {
-      ackTimeout: 10000,
-      retries: 3,
-    });
+const socket = new WebSocket("ws://localhost:5001");
+
+socket.onopen = function() {
+    console.log("Connected to WebSocket server");
+};
+
+socket.onmessage = function(event) {
+    var data = event.data;
+    console.log("Received message from server:", data);
+      const item = document.createElement('li');
+      item.textContent = (typeof data === "object" ? JSON.stringify(data) : data);
+      messages.appendChild(item);
+      //window.scrollTo(0, document.body.scrollHeight);
+};
+
+socket.onerror = function(error) {
+      const item = document.createElement('li');
+      item.textContent = "socket error: "+JSON.stringify(error);
+      messages.appendChild(item);
+    console.error("WebSocket Error:", error);
+};
+
+socket.onclose = function() {
+      const item = document.createElement('li');
+      item.textContent = "websocket closed";
+      messages.appendChild(item);
+    console.log("WebSocket connection closed");
+};
 
     const form = document.getElementById('form');
     const input = document.getElementById('input');
@@ -41,22 +73,9 @@
       e.preventDefault();
       if (input.value) {
         const clientOffset = `${socket.id}-${counter++}`;
-        socket.emit(event.value, input.value);
+        socket.send(input.value);
         input.value = '';
       }
-    });
-var onevent = socket.onevent;
-socket.onevent = function (packet) {
-    var args = packet.data || [];
-    onevent.call (this, packet);    // original call
-    packet.data = ["*"].concat(args);
-    onevent.call(this, packet);      // additional call to catch-all
-};
-    socket.on('*', (event, data) => {
-      const item = document.createElement('li');
-      item.textContent = event + ": "+(typeof data === "object" ? JSON.stringify(data) : data);
-      messages.appendChild(item);
-      //window.scrollTo(0, document.body.scrollHeight);
     });
   </script>
 </body>
