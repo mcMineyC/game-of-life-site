@@ -98,8 +98,13 @@ textarea {
     display: none;
     padding: 8px;
 }
+.RLE_modeBottom {
+    display: none;
+    padding: 8px;
+}
 .viewer_cache {
     display: none;
+    margin-left: 16px;
 }
 .Translator {
     display: none;

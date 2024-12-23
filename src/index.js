@@ -43,7 +43,8 @@ var sideBar;
 var listSideBar;
 var mainBox;
 var lifeViewer;
-var patternTitleTxtarea;
+var RLEmodeTop;
+var RLEmodeBottom;
 var viewerCache;
 var htmlStyle;
 var translator;
@@ -60,7 +61,8 @@ function body_loaded() {
     listSideBar = document.getElementById("listsidebar");
     mainBox = document.getElementById("mainbox");
     lifeViewer = document.querySelector("canvas");
-    patternTitleTxtarea = document.querySelector(".RLE_modeTop");
+    RLEmodeTop = document.querySelector(".RLE_modeTop");
+    RLEmodeBottom = document.querySelector(".RLE_modeBottom");
     viewerCache = document.querySelector(".viewer_cache");
     translator = document.querySelector(".Translator");
     LEDcontrols = document.querySelector(".LEDcontrols");
@@ -145,7 +147,8 @@ function show_Game() {
     showLEDcontrols.style.borderColor = aGreen;
 
     lifeViewer.style.display = 'inline';
-    patternTitleTxtarea.style.display = 'none';
+    RLEmodeTop.style.display = 'none';
+    RLEmodeBottom.style.display = 'none';
     viewerCache.style.display = 'none';
     translator.style.display = 'none';
     LEDcontrols.style.display = 'none';
@@ -160,7 +163,8 @@ function show_RLE() {
     showLEDcontrols.style.borderColor = aGreen;
 
     lifeViewer.style.display = 'none';
-    patternTitleTxtarea.style.display = 'block';
+    RLEmodeTop.style.display = 'block';
+    RLEmodeBottom.style.display = 'block';
     viewerCache.style.display = 'block';
     translator.style.display = 'none';
     LEDcontrols.style.display = 'none';
@@ -176,7 +180,8 @@ function show_Translator() {
     showLEDcontrols.style.borderColor = aGreen;
 
     lifeViewer.style.display = 'none';
-    patternTitleTxtarea.style.display = 'none';
+    RLEmodeTop.style.display = 'none';
+    RLEmodeBottom.style.display = 'none';
     viewerCache.style.display = 'none';
     translator.style.display = 'block';
     LEDcontrols.style.display = 'none';
@@ -191,7 +196,8 @@ function show_LEDcontrols() {
     showLEDcontrols.style.borderColor = darkerGreen;
 
     lifeViewer.style.display = 'none';
-    patternTitleTxtarea.style.display = 'none';
+    RLEmodeTop.style.display = 'none';
+    RLEmodeBottom.style.display = 'none';
     viewerCache.style.display = 'none';
     translator.style.display = 'none';
     LEDcontrols.style.display = 'block';
