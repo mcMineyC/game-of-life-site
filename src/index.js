@@ -254,10 +254,11 @@ async function testPattern() {
     `${url}/patterns/get-named?id=1cc274d3d0702d311b34621142b86ad4`,
   );
   console.log(pat);
-  pat.type = "lexicon";
+  pat.type = "lexicon"; // set type to lexicon since server doesn't
   changePattern(pat);
 }
 
+//supporting functions for getting from and sending data to the server
 async function getRequest(url) {
   try {
     const response = await fetch(url);
