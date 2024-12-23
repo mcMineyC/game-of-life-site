@@ -1,68 +1,86 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;1,500&display=swap"
+            rel="stylesheet"
+        />
 
-    <!--Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-
-    <meta name="LifeViewer" content="viewer textarea" />
+        <meta name="LifeViewer" content="viewer textarea" />
         <!--idk why i need the meta tag but it said to use it-->
         <script src="lv-plugin.js"></script>
 
-    <link rel="stylesheet" href="./index.css">
-    <script src="./testyJSON.js"></script> <!--for testing only-->
-    <script src="./index.js"></script>
+        <link rel="stylesheet" href="./index.css" />
+        <script src="./testyJSON.js"></script>
+        <!--for testing only-->
+        <script src="./index.js"></script>
 
-    <title>Conway's Game of Life</title>
-</head>
+        <title>Conway's Game of Life</title>
+    </head>
 
-<body onload="body_loaded();">
-
-    <div id="topbar">
-        <div id="modes">
-            <button onclick="show_Game();" id="showGame" style="border-color: rgb(0, 60, 0);">Game</button>
-            <button onclick="show_RLE();" id="showRLE">RLE</button>
-            <button onclick="show_Translator();" id="showTranslator">Translator</button>
-            <button onclick="show_LEDcontrols();" id="showLEDcontrols">LED screen</button>
-
-        </div>
-    </div>
-    <div style="width: 100%;">
-        <div id="sidebar">
-            <div>searchbar</div>
-            <div id="listsidebar">
+    <body onload="body_loaded();">
+        <div id="topbar">
+            <div id="modes">
+                <button
+                    onclick="show_Game();"
+                    id="showGame"
+                    style="border-color: rgb(0, 60, 0)"
+                >
+                    Game
+                </button>
+                <button onclick="show_RLE();" id="showRLE">RLE</button>
+                <button onclick="show_Translator();" id="showTranslator">
+                    Translator
+                </button>
+                <button onclick="show_LEDcontrols();" id="showLEDcontrols">
+                    LED screen
+                </button>
             </div>
         </div>
-        <div id="divider"></div>
-        <div id="mainbox">
+        <div style="width: 100%">
+            <div id="sidebar">
+                <div>searchbar</div>
+                <div id="listsidebar"></div>
+            </div>
+            <div id="divider"></div>
+            <div id="mainbox">
+                <div class="RLE_modeTop">
+                    Pattern name:<br />
+                    <textarea id="rle-name">
+This is the name of the pattern</textarea
+                    >
+                    RLE code for pattern:
+                </div>
 
-            <div class="RLE_modeTop">
-                Pattern name:<br/>
-                <textarea>This is the name of the pattern</textarea>
-                RLE code for pattern:
+                <div class="viewer">
+                    <textarea class="viewer_cache">
+x = 3, y = 3, rule = B3/S23
+bo$2bo$3o!</textarea
+                    >
+                    <canvas width="10" height="10"></canvas>
+                </div>
+                <div class="RLE_modeBottom">
+                    Author:<br />
+                    <textarea id="rle-author">someone</textarea>
+                    Save options:
+                    <button id="rle-save-overwrite" class="settings_button">
+                        Overwrite current save
+                    </button>
+                    <button id="rle-save-new" class="settings_button">
+                        Save as new
+                    </button>
+                </div>
+                <div class="Translator">all of google translate in here</div>
+                <div class="LEDcontrols">
+                    TODO add stuff to control the LED matrix.
+                </div>
             </div>
-
-            <div class="viewer">
-                <textarea class="viewer_cache">x = 3, y = 3, rule = B3/S23
-bo$2bo$3o!</textarea>
-                <canvas width="10" height="10"></canvas>
-            </div>
-            <div class="RLE_modeBottom">
-                Author:<br/>
-                <textarea>someone</textarea>
-                Save options:
-                <button class="settings_button">Overwrite current save</button>
-                <button class="settings_button">Save as new</button>
-            </div>
-            <div class="Translator">all of google translate in here</div>
-            <div class="LEDcontrols">TODO add stuff to control the LED matrix.</div>
         </div>
-    </div>
-
-</body>
+    </body>
 </html>
