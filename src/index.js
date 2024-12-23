@@ -53,6 +53,9 @@ var showGame;
 var showRLE;
 var showTranslator;
 var showLEDcontrols;
+var overwriteButton;
+var txtTitle;
+var txtAuthor;
 
 function body_loaded() {
     //set a whole bunch of vars for elements (is this too much?)
@@ -71,6 +74,9 @@ function body_loaded() {
     showRLE = document.getElementById("showRLE");
     showTranslator = document.getElementById("showTranslator");
     showLEDcontrols = document.getElementById("showLEDcontrols");
+    overwriteButton = document.getElementById("overwrite_button");
+    txtTitle = document.getElementById("txt_title");
+    txtAuthor = document.getElementById("txt_author");
 
     // set heights of everything
     let heights = window.innerHeight - document.getElementById("topbar").offsetHeight;
@@ -204,3 +210,23 @@ function show_LEDcontrols() {
 
     mainBox.style.overflowY = 'scroll';
 };
+
+
+//TODO this is just a skeleton framework
+function changePattern(pat){
+    window.selectedPattern = pat; // used to keep track of state.
+    
+    var type = pat.type; // Lexicon or user, used to not overwrite the lexicon
+    var rleTextarea = viewerCache;
+    rleTextarea.innerHTML = pat.rawRLE; // aka with comment line
+    window.updateMe(lifeViewer); // updates viewer
+    if(type == "lexicon"){
+      overwriteButton.style.display = "none";
+    } else {
+      overwriteButton.style.display = "block";
+    }
+    txtAuthor.innerHTML = pat.author;
+    txtTitle.innerHTML = pat.name;
+  
+    // it's that simple ;)
+  }
