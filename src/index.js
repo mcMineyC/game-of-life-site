@@ -6,27 +6,27 @@ var url = "https://eatthecow.mooo.com:5050";
 //refreshPatterns();
 
 function refreshPatterns() {
-  axios
-    .get(`${url}/patterns/get`)
-    .then((response) => {
-      var patterns = response.data.patterns;
-      window.patterns = patterns;
-      console.log(patterns);
-      populatePane(patterns);
-    })
-    .catch((error) => {
-      console.error(error.stack);
-    });
-  axios
-    .get(`${url}/lexicon/get`)
-    .then((response) => {
-      var lexicon = response.data.patterns;
-      window.lexicon = lexicon;
-      console.log(lexicon);
-    })
-    .catch((error) => {
-      console.error(error.stack);
-    });
+    axios
+        .get(`${url}/patterns/get`)
+        .then((response) => {
+            var patterns = response.data.patterns;
+            window.patterns = patterns;
+            console.log(patterns);
+            populatePane(patterns);
+        })
+        .catch((error) => {
+            console.error(error.stack);
+        });
+    axios
+        .get(`${url}/lexicon/get`)
+        .then((response) => {
+            var lexicon = response.data.patterns;
+            window.lexicon = lexicon;
+            console.log(lexicon);
+        })
+        .catch((error) => {
+            console.error(error.stack);
+        });
 }
 
 //All code above is by McMineyC
@@ -47,9 +47,11 @@ var patternTitleTxtarea;
 var viewerCache;
 var htmlStyle;
 var translator;
+var LEDcontrols;
 var showGame;
 var showRLE;
 var showTranslator;
+var showLEDcontrols;
 
 function body_loaded() {
     //set a whole bunch of vars for elements (is this too much?)
@@ -61,10 +63,12 @@ function body_loaded() {
     patternTitleTxtarea = document.querySelector(".RLE_modeTop");
     viewerCache = document.querySelector(".viewer_cache");
     translator = document.querySelector(".Translator");
+    LEDcontrols = document.querySelector(".LEDcontrols");
     htmlStyle = getComputedStyle(document.querySelector("html"));
     showGame = document.getElementById("showGame");
     showRLE = document.getElementById("showRLE");
     showTranslator = document.getElementById("showTranslator");
+    showLEDcontrols = document.getElementById("showLEDcontrols");
 
     // set heights of everything
     let heights = window.innerHeight - document.getElementById("topbar").offsetHeight;
@@ -82,38 +86,38 @@ function body_loaded() {
     add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
     add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
     add_pattern(server_patterns["169b44d834c77490384040f7f18d9be7"]);
-}
+};
 
 //--TODO-- add border limitations so that divider cannot slide all the way to the edge of screen. use 10px marign or so.
 
 //fires once to initialize sidebar resizing feature
 function resizablilty() {
-  // credit: https://github.com/Tivotal/Resizable-Sidebar-Menu-with-Theme-Toggle-in-HTML-CSS-and-JavaScript
+    // credit: https://github.com/Tivotal/Resizable-Sidebar-Menu-with-Theme-Toggle-in-HTML-CSS-and-JavaScript
 
-  Divider.addEventListener("mousedown", () => {
-    document.addEventListener("mousemove", resize, true);
-  });
+    Divider.addEventListener("mousedown", () => {
+        document.addEventListener("mousemove", resize, true);
+    });
 
-  document.addEventListener("mouseup", () => {
-    document.removeEventListener("mousemove", resize, true);
-  });
+    document.addEventListener("mouseup", () => {
+        document.removeEventListener("mousemove", resize, true);
+    });
 }
 
 function resize(e) {
-  let size = `${e.x}px`;
-  let mainWidth = htmlStyle.getPropertyValue("--dividewidth");
-  if (window.innerWidth - e.x - parseInt(mainWidth) <= 50) {
-    // If mainbox width is less than 20px, don't resize
-    // mainbox calculation taken from below but replaced with absolute values
-    return;
-  }
-  sideBar.style.width = size;
-  Divider.style.left = size;
-  mainBox.style.width = `calc(100% - ${size} - ${mainWidth})`;
+    let size = `${e.x}px`;
+    let mainWidth = htmlStyle.getPropertyValue("--dividewidth");
+    if (window.innerWidth - e.x - parseInt(mainWidth) <= 50) {
+        // If mainbox width is less than 20px, don't resize
+        // mainbox calculation taken from below but replaced with absolute values
+        return;
+    }
+    sideBar.style.width = size;
+    Divider.style.left = size;
+    mainBox.style.width = `calc(100% - ${size} - ${mainWidth})`;
 
-  // Life viewer resize
-  lifeViewer.width = parseInt(getComputedStyle(mainBox).width);
-  lifeViewer.height = parseInt(getComputedStyle(mainBox).height);
+    // Life viewer resize
+    lifeViewer.width = parseInt(getComputedStyle(mainBox).width);
+    lifeViewer.height = parseInt(getComputedStyle(mainBox).height);
 };
 
 //input: pattern with info to display
@@ -126,39 +130,71 @@ function add_pattern(apPatterns) {
     item.title = myName;
     item.className = "pattern_button";
     item.style.backgroundColor = list_counter%2===0 ? dark_color : light_color; //create alternating colors
-    listSideBar.appendChild(item)
+    listSideBar.appendChild(item);
 };
 
+
+//all this stuff controls the page toggling. there are four functions, one for each button.
 const aGreen = 'rgb(0, 114, 68)';
 const darkerGreen = 'rgb(0, 60, 0)';
 function show_Game() {
-  showGame.style.borderColor = darkerGreen;
-  showRLE.style.borderColor = aGreen;
-  showTranslator.style.borderColor = aGreen;
-  lifeViewer.style.display = 'inline';
-  patternTitleTxtarea.style.display = 'none';
-  viewerCache.style.display = 'none';
-  translator.style.display = 'none';
-  mainBox.style.overflowY = 'hidden';
+
+    showGame.style.borderColor = darkerGreen;
+    showRLE.style.borderColor = aGreen;
+    showTranslator.style.borderColor = aGreen;
+    showLEDcontrols.style.borderColor = aGreen;
+
+    lifeViewer.style.display = 'inline';
+    patternTitleTxtarea.style.display = 'none';
+    viewerCache.style.display = 'none';
+    translator.style.display = 'none';
+    LEDcontrols.style.display = 'none';
+
+    mainBox.style.overflowY = 'hidden';
 };
+
 function show_RLE() {
-  showGame.style.borderColor = aGreen;
-  showRLE.style.borderColor = darkerGreen;
-  showTranslator.style.borderColor = aGreen;
-  lifeViewer.style.display = 'none';
-  patternTitleTxtarea.style.display = 'block';
-  viewerCache.style.display = 'block';
-  translator.style.display = 'none';
-  mainBox.style.overflowY = 'scroll';
-  document.querySelectorAll('textarea').forEach((el) => {el.style.width = mainBox.offsetWidth * 0.8 + 'px'});
+    showGame.style.borderColor = aGreen;
+    showRLE.style.borderColor = darkerGreen;
+    showTranslator.style.borderColor = aGreen;
+    showLEDcontrols.style.borderColor = aGreen;
+
+    lifeViewer.style.display = 'none';
+    patternTitleTxtarea.style.display = 'block';
+    viewerCache.style.display = 'block';
+    translator.style.display = 'none';
+    LEDcontrols.style.display = 'none';
+
+    mainBox.style.overflowY = 'scroll';
+    document.querySelectorAll('textarea').forEach((el) => {el.style.width = mainBox.offsetWidth * 0.8 + 'px'}); //set a moderate width of all textareas
 };
+
 function show_Translator() {
-  showGame.style.borderColor = aGreen;
-  showRLE.style.borderColor = aGreen;
-  showTranslator.style.borderColor = darkerGreen;
-  lifeViewer.style.display = 'none';
-  patternTitleTxtarea.style.display = 'none';
-  viewerCache.style.display = 'none';
-  translator.style.display = 'block';
-  mainBox.style.overflowY = 'scroll';
+    showGame.style.borderColor = aGreen;
+    showRLE.style.borderColor = aGreen;
+    showTranslator.style.borderColor = darkerGreen;
+    showLEDcontrols.style.borderColor = aGreen;
+
+    lifeViewer.style.display = 'none';
+    patternTitleTxtarea.style.display = 'none';
+    viewerCache.style.display = 'none';
+    translator.style.display = 'block';
+    LEDcontrols.style.display = 'none';
+
+    mainBox.style.overflowY = 'scroll';
+};
+
+function show_LEDcontrols() {
+    showGame.style.borderColor = aGreen;
+    showRLE.style.borderColor = aGreen;
+    showTranslator.style.borderColor = aGreen;
+    showLEDcontrols.style.borderColor = darkerGreen;
+
+    lifeViewer.style.display = 'none';
+    patternTitleTxtarea.style.display = 'none';
+    viewerCache.style.display = 'none';
+    translator.style.display = 'none';
+    LEDcontrols.style.display = 'block';
+
+    mainBox.style.overflowY = 'scroll';
 };

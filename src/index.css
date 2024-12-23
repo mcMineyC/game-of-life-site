@@ -96,11 +96,15 @@ textarea {
 
 .RLE_modeTop {
     display: none;
+    padding: 8px;
 }
 .viewer_cache {
     display: none;
 }
 .Translator {
+    display: none;
+}
+.LEDcontrols {
     display: none;
 }
 
